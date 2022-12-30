@@ -180,7 +180,7 @@
             print(output);
         ```
         - Result:
-        <p align="center">
+        <p align="left">
             <img width="250" src="media/fmt_example.png" alt="FMT">
         </p> 
 
