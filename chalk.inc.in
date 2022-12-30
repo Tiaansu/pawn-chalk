@@ -1,0 +1,415 @@
+/* Pawn Chalk
+ * Version @PAWNCHALK_VERSION@
+ * made by Tiaansu
+ */
+
+#if defined pawnchalk_included
+    #endinput
+#endif
+#define pawnchalk_included
+
+// enums
+enum e_BackgroundColors
+{
+    BG_None = 0,
+    BG_Black,
+    BG_Red,
+    BG_Green,
+    BG_Yellow,
+    BG_Blue,
+    BG_Magenta,
+    BG_Cyan,
+    BG_White,
+
+    BG_BrightBlack,
+    BG_BrightRed,
+    BG_BrightGreen,
+    BG_BrightYellow,
+    BG_BrightBlue,
+    BG_BrightMagenta,
+    BG_BrightCyan,
+    BG_BrightWhite
+};
+
+enum e_ForegroundColors
+{
+    FG_None = 0,
+    FG_Black,
+    FG_Red,
+    FG_Green,
+    FG_Yellow,
+    FG_Blue,
+    FG_Magenta,
+    FG_Cyan,
+    FG_White,
+
+    FG_BrightBlack,
+    FG_BrightRed,
+    FG_BrightGreen,
+    FG_BrightYellow,
+    FG_BrightBlue,
+    FG_BrightMagenta,
+    FG_BrightCyan,
+    FG_BrightWhite
+};
+
+enum e_FormatStyles
+{
+    FMT_Bold = 0,
+    FMT_Faint,
+    FMT_Italic,
+    FMT_Underline,
+    FMT_SlowBlink,
+    FMT_RapidBlink,
+    FMT_Reverse,
+    FMT_Conceal,
+    FMT_CrossedOut
+};
+
+// natives
+// Backgrounds
+native chalk_bg_none(const input[], output[], len = sizeof(output));
+native chalk_bg_black(const input[], output[], len = sizeof(output));
+native chalk_bg_red(const input[], output[], len = sizeof(output));
+native chalk_bg_green(const input[], output[], len = sizeof(output));
+native chalk_bg_yellow(const input[], output[], len = sizeof(output));
+native chalk_bg_blue(const input[], output[], len = sizeof(output));
+native chalk_bg_magenta(const input[], output[], len = sizeof(output));
+native chalk_bg_cyan(const input[], output[], len = sizeof(output));
+native chalk_bg_white(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_black(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_red(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_green(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_yellow(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_blue(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_magenta(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_cyan(const input[], output[], len = sizeof(output));
+native chalk_bg_bright_white(const input[], output[], len = sizeof(output));
+
+// Foregrounds
+native chalk_fg_none(const input[], output[], len = sizeof(output));
+native chalk_fg_black(const input[], output[], len = sizeof(output));
+native chalk_fg_red(const input[], output[], len = sizeof(output));
+native chalk_fg_green(const input[], output[], len = sizeof(output));
+native chalk_fg_yellow(const input[], output[], len = sizeof(output));
+native chalk_fg_blue(const input[], output[], len = sizeof(output));
+native chalk_fg_magenta(const input[], output[], len = sizeof(output));
+native chalk_fg_cyan(const input[], output[], len = sizeof(output));
+native chalk_fg_white(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_black(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_red(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_green(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_yellow(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_blue(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_magenta(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_cyan(const input[], output[], len = sizeof(output));
+native chalk_fg_bright_white(const input[], output[], len = sizeof(output));
+
+// Formats / styles
+native chalk_fmt_bold(const input[], output[], len = sizeof(output));
+native chalk_fmt_faint(const input[], output[], len = sizeof(output));
+native chalk_fmt_italic(const input[], output[], len = sizeof(output));
+native chalk_fmt_underline(const input[], output[], len = sizeof(output));
+native chalk_fmt_slow_blink(const input[], output[], len = sizeof(output));
+native chalk_fmt_rapid_blink(const input[], output[], len = sizeof(output));
+native chalk_fmt_reverse(const input[], output[], len = sizeof(output));
+native chalk_fmt_conceal(const input[], output[], len = sizeof(output));
+native chalk_fmt_crossed_out(const input[], output[], len = sizeof(output));
+
+// Functions
+#if defined _INC_y_va
+    stock chalk_background(e_BackgroundColors:color = BG_None, const text[] = "Test", va_args<>)
+    {
+        new str[192], output[192];
+        va_format(str, sizeof(str), text, va_start<2>);
+
+        switch (color)
+        {
+            case BG_None:          chalk_bg_none(str, output);
+            case BG_Black:         chalk_bg_black(str, output);
+            case BG_Red:           chalk_bg_red(str, output);
+            case BG_Green:         chalk_bg_green(str, output);
+            case BG_Yellow:        chalk_bg_yellow(str, output);
+            case BG_Blue:          chalk_bg_blue(str, output);
+            case BG_Magenta:       chalk_bg_magenta(str, output);
+            case BG_Cyan:          chalk_bg_cyan(str, output);
+            case BG_White:         chalk_bg_white(str, output);
+            case BG_BrightBlack:   chalk_bg_bright_black(str, output);
+            case BG_BrightRed:     chalk_bg_bright_red(str, output);
+            case BG_BrightGreen:   chalk_bg_bright_green(str, output);
+            case BG_BrightYellow:  chalk_bg_bright_yellow(str, output);
+            case BG_BrightBlue:    chalk_bg_bright_blue(str, output);
+            case BG_BrightMagenta: chalk_bg_bright_magenta(str, output);
+            case BG_BrightCyan:    chalk_bg_bright_cyan(str, output);
+            case BG_BrightWhite:   chalk_bg_bright_white(str, output);
+        }
+        return output;
+    }
+
+    stock chalk_foreground(e_ForegroundColors:color = FG_None, const text[] = "Test", va_args<>)
+    {
+        new str[192], output[192];
+        va_format(str, sizeof(str), text, va_start<2>);
+
+        switch (color)
+        {
+            case FG_None:          chalk_fg_none(str, output);
+            case FG_Black:         chalk_fg_black(str, output);
+            case FG_Red:           chalk_fg_red(str, output);
+            case FG_Green:         chalk_fg_green(str, output);
+            case FG_Yellow:        chalk_fg_yellow(str, output);
+            case FG_Blue:          chalk_fg_blue(str, output);
+            case FG_Magenta:       chalk_fg_magenta(str, output);
+            case FG_Cyan:          chalk_fg_cyan(str, output);
+            case FG_White:         chalk_fg_white(str, output);
+            case FG_BrightBlack:   chalk_fg_bright_black(str, output);
+            case FG_BrightRed:     chalk_fg_bright_red(str, output);
+            case FG_BrightGreen:   chalk_fg_bright_green(str, output);
+            case FG_BrightYellow:  chalk_fg_bright_yellow(str, output);
+            case FG_BrightBlue:    chalk_fg_bright_blue(str, output);
+            case FG_BrightMagenta: chalk_fg_bright_magenta(str, output);
+            case FG_BrightCyan:    chalk_fg_bright_cyan(str, output);
+            case FG_BrightWhite:   chalk_fg_bright_white(str, output);
+        }
+        return output;
+    }
+
+    stock chalk_format_styles(e_FormatStyles:style = FMT_Bold, const text[] = "Test", va_args<>)
+    {
+        new str[192], output[192];
+        va_format(str, sizeof(str), text, va_start<2>);
+
+        switch (style)
+        {
+            case FMT_Bold:       chalk_fmt_bold(str, output);
+            case FMT_Faint:      chalk_fmt_faint(str, output);
+            case FMT_Italic:     chalk_fmt_italic(str, output);
+            case FMT_Underline:  chalk_fmt_underline(str, output);
+            case FMT_SlowBlink:  chalk_fmt_slow_blink(str, output);
+            case FMT_RapidBlink: chalk_fmt_rapid_blink(str, output);
+            case FMT_Reverse:    chalk_fmt_reverse(str, output);
+            case FMT_Conceal:    chalk_fmt_conceal(str, output);
+            case FMT_CrossedOut: chalk_fmt_crossed_out(str, output);
+        }
+        return output;
+    }
+#else
+    stock chalk_background(e_BackgroundColors:color = BG_None, const text[] = "Test", {Float,_}:...)
+    {
+        static
+            args,
+            str[192],
+            output[192];
+
+        if ((args = numargs()) <= 2)
+        {
+            switch (color)
+            {
+                case BG_None:          chalk_bg_none(text, output);
+                case BG_Black:         chalk_bg_black(text, output);
+                case BG_Red:           chalk_bg_red(text, output);
+                case BG_Green:         chalk_bg_green(text, output);
+                case BG_Yellow:        chalk_bg_yellow(text, output);
+                case BG_Blue:          chalk_bg_blue(text, output);
+                case BG_Magenta:       chalk_bg_magenta(text, output);
+                case BG_Cyan:          chalk_bg_cyan(text, output);
+                case BG_White:         chalk_bg_white(text, output);
+                case BG_BrightBlack:   chalk_bg_bright_black(text, output);
+                case BG_BrightRed:     chalk_bg_bright_red(text, output);
+                case BG_BrightGreen:   chalk_bg_bright_green(text, output);
+                case BG_BrightYellow:  chalk_bg_bright_yellow(text, output);
+                case BG_BrightBlue:    chalk_bg_bright_blue(text, output);
+                case BG_BrightMagenta: chalk_bg_bright_magenta(text, output);
+                case BG_BrightCyan:    chalk_bg_bright_cyan(text, output);
+                case BG_BrightWhite:   chalk_bg_bright_white(text, output);
+            }
+            return output;
+        }
+        else
+        {
+            while (--args >= 2)
+            {
+                #emit LCTRL 	5
+                #emit LOAD.alt 	args
+                #emit SHL.C.alt 2
+                #emit ADD.C 	12
+                #emit ADD
+                #emit LOAD.I
+                #emit PUSH.pri
+            }
+            #emit PUSH.S 		text
+            #emit PUSH.C 		192
+            #emit PUSH.C 		str
+            #emit LOAD.S.pri 	8
+            #emit ADD.C 		4
+            #emit PUSH.pri
+            #emit SYSREQ.C 		format
+            #emit LCTRL 		5
+            #emit SCTRL 		4
+
+            switch (color)
+            {
+                case BG_None:          chalk_bg_none(str, output);
+                case BG_Black:         chalk_bg_black(str, output);
+                case BG_Red:           chalk_bg_red(str, output);
+                case BG_Green:         chalk_bg_green(str, output);
+                case BG_Yellow:        chalk_bg_yellow(str, output);
+                case BG_Blue:          chalk_bg_blue(str, output);
+                case BG_Magenta:       chalk_bg_magenta(str, output);
+                case BG_Cyan:          chalk_bg_cyan(str, output);
+                case BG_White:         chalk_bg_white(str, output);
+                case BG_BrightBlack:   chalk_bg_bright_black(str, output);
+                case BG_BrightRed:     chalk_bg_bright_red(str, output);
+                case BG_BrightGreen:   chalk_bg_bright_green(str, output);
+                case BG_BrightYellow:  chalk_bg_bright_yellow(str, output);
+                case BG_BrightBlue:    chalk_bg_bright_blue(str, output);
+                case BG_BrightMagenta: chalk_bg_bright_magenta(str, output);
+                case BG_BrightCyan:    chalk_bg_bright_cyan(str, output);
+                case BG_BrightWhite:   chalk_bg_bright_white(str, output);
+            }
+            return output;
+
+            #emit RETN
+        }
+    }
+    stock chalk_foreground(e_ForegroundColors:color = FG_None, const text[] = "Test", {Float,_}:...)
+    {
+        static
+            args,
+            str[192],
+            output[192];
+
+        if ((args = numargs()) <= 2)
+        {
+            switch (color)
+            {
+                case FG_None:          chalk_fg_none(text, output);
+                case FG_Black:         chalk_fg_black(text, output);
+                case FG_Red:           chalk_fg_red(text, output);
+                case FG_Green:         chalk_fg_green(text, output);
+                case FG_Yellow:        chalk_fg_yellow(text, output);
+                case FG_Blue:          chalk_fg_blue(text, output);
+                case FG_Magenta:       chalk_fg_magenta(text, output);
+                case FG_Cyan:          chalk_fg_cyan(text, output);
+                case FG_White:         chalk_fg_white(text, output);
+                case FG_BrightBlack:   chalk_fg_bright_black(text, output);
+                case FG_BrightRed:     chalk_fg_bright_red(text, output);
+                case FG_BrightGreen:   chalk_fg_bright_green(text, output);
+                case FG_BrightYellow:  chalk_fg_bright_yellow(text, output);
+                case FG_BrightBlue:    chalk_fg_bright_blue(text, output);
+                case FG_BrightMagenta: chalk_fg_bright_magenta(text, output);
+                case FG_BrightCyan:    chalk_fg_bright_cyan(text, output);
+                case FG_BrightWhite:   chalk_fg_bright_white(text, output);
+            }
+            return output;
+        }
+        else
+        {
+            while (--args >= 2)
+            {
+                #emit LCTRL 	5
+                #emit LOAD.alt 	args
+                #emit SHL.C.alt 2
+                #emit ADD.C 	12
+                #emit ADD
+                #emit LOAD.I
+                #emit PUSH.pri
+            }
+            #emit PUSH.S 		text
+            #emit PUSH.C 		192
+            #emit PUSH.C 		str
+            #emit LOAD.S.pri 	8
+            #emit ADD.C 		4
+            #emit PUSH.pri
+            #emit SYSREQ.C 		format
+            #emit LCTRL 		5
+            #emit SCTRL 		4
+
+            switch (color)
+            {
+                case FG_None:          chalk_fg_none(str, output);
+                case FG_Black:         chalk_fg_black(str, output);
+                case FG_Red:           chalk_fg_red(str, output);
+                case FG_Green:         chalk_fg_green(str, output);
+                case FG_Yellow:        chalk_fg_yellow(str, output);
+                case FG_Blue:          chalk_fg_blue(str, output);
+                case FG_Magenta:       chalk_fg_magenta(str, output);
+                case FG_Cyan:          chalk_fg_cyan(str, output);
+                case FG_White:         chalk_fg_white(str, output);
+                case FG_BrightBlack:   chalk_fg_bright_black(str, output);
+                case FG_BrightRed:     chalk_fg_bright_red(str, output);
+                case FG_BrightGreen:   chalk_fg_bright_green(str, output);
+                case FG_BrightYellow:  chalk_fg_bright_yellow(str, output);
+                case FG_BrightBlue:    chalk_fg_bright_blue(str, output);
+                case FG_BrightMagenta: chalk_fg_bright_magenta(str, output);
+                case FG_BrightCyan:    chalk_fg_bright_cyan(str, output);
+                case FG_BrightWhite:   chalk_fg_bright_white(str, output);
+            }
+            return output;
+
+            #emit RETN
+        }
+    }
+    stock chalk_format_styles(e_FormatStyles:style = FMT_Bold, const text[] = "Test", {Float,_}:...)
+    {
+        static
+            args,
+            str[192],
+            output[192];
+
+        if ((args = numargs()) <= 2)
+        {
+            switch (style)
+            {
+                case FMT_Bold:       chalk_fmt_bold(text, output);
+                case FMT_Faint:      chalk_fmt_faint(text, output);
+                case FMT_Italic:     chalk_fmt_italic(text, output);
+                case FMT_Underline:  chalk_fmt_underline(text, output);
+                case FMT_SlowBlink:  chalk_fmt_slow_blink(text, output);
+                case FMT_RapidBlink: chalk_fmt_rapid_blink(text, output);
+                case FMT_Reverse:    chalk_fmt_reverse(text, output);
+                case FMT_Conceal:    chalk_fmt_conceal(text, output);
+                case FMT_CrossedOut: chalk_fmt_crossed_out(text, output);
+            }
+            return output;
+        }
+        else
+        {
+            while (--args >= 2)
+            {
+                #emit LCTRL 	5
+                #emit LOAD.alt 	args
+                #emit SHL.C.alt 2
+                #emit ADD.C 	12
+                #emit ADD
+                #emit LOAD.I
+                #emit PUSH.pri
+            }
+            #emit PUSH.S 		text
+            #emit PUSH.C 		192
+            #emit PUSH.C 		str
+            #emit LOAD.S.pri 	8
+            #emit ADD.C 		4
+            #emit PUSH.pri
+            #emit SYSREQ.C 		format
+            #emit LCTRL 		5
+            #emit SCTRL 		4
+
+            switch (style)
+            {
+                case FMT_Bold:       chalk_fmt_bold(str, output);
+                case FMT_Faint:      chalk_fmt_faint(str, output);
+                case FMT_Italic:     chalk_fmt_italic(str, output);
+                case FMT_Underline:  chalk_fmt_underline(str, output);
+                case FMT_SlowBlink:  chalk_fmt_slow_blink(str, output);
+                case FMT_RapidBlink: chalk_fmt_rapid_blink(str, output);
+                case FMT_Reverse:    chalk_fmt_reverse(str, output);
+                case FMT_Conceal:    chalk_fmt_conceal(str, output);
+                case FMT_CrossedOut: chalk_fmt_crossed_out(str, output);
+            }
+            return output;
+
+            #emit RETN
+        }
+    }
+#endif
