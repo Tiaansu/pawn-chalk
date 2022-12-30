@@ -41,12 +41,63 @@
     - See [here](https://github.com/Tiaansu/pawn-chalk/blob/main/tests/chalk.inc#L71-L87) to see the list of background colors available.
     - Example:
         ```pawn
-            new output[256];
+            new bg_output[256];
 
-            chalk_bg_green("hello world", output);
-            print(output);
+            chalk_bg_none("hello world", bg_output);
+            printf("chalk_bg_none: %s", bg_output);
+            
+            chalk_bg_black("hello world", bg_output);
+            printf("chalk_bg_black: %s", bg_output);
+
+            chalk_bg_red("hello world", bg_output);
+            printf("chalk_bg_red: %s", bg_output);
+
+            chalk_bg_green("hello world", bg_output);
+            printf("chalk_bg_green: %s", bg_output);
+
+            chalk_bg_yellow("hello world", bg_output);
+            printf("chalk_bg_yellow: %s", bg_output);
+
+            chalk_bg_blue("hello world", bg_output);
+            printf("chalk_bg_blue: %s", bg_output);
+
+            chalk_bg_magenta("hello world", bg_output);
+            printf("chalk_bg_magenta: %s", bg_output);
+
+            chalk_bg_cyan("hello world", bg_output);
+            printf("chalk_bg_cyan: %s", bg_output);
+
+            chalk_bg_white("hello world", bg_output);
+            printf("chalk_bg_white: %s", bg_output);
+
+            chalk_bg_bright_black("hello world", bg_output);
+            printf("chalk_bg_bright_black: %s", bg_output);
+
+            chalk_bg_bright_red("hello world", bg_output);
+            printf("chalk_bg_bright_red: %s", bg_output);
+
+            chalk_bg_bright_green("hello world", bg_output);
+            printf("chalk_bg_bright_green: %s", bg_output);
+
+            chalk_bg_bright_yellow("hello world", bg_output);
+            printf("chalk_bg_bright_yellow: %s", bg_output);
+
+            chalk_bg_bright_blue("hello world", bg_output);
+            printf("chalk-bg_bright_blue: %s", bg_output);
+
+            chalk_bg_bright_magenta("hello world", bg_output);
+            printf("chalk_bg_bright_magenta: %s", bg_output);
+
+            chalk_bg_bright_cyan("hello world", bg_output);
+            printf("chalk_bg_bright_cyan: %s", bg_output);
+
+            chalk_bg_bright_white("hello world", bg_output);
+            printf("chalk_bg_bright_white: %s", bg_output);
         ```
-        This will return: <img width="150" src="media/bg_example.png" alt="BG">
+        - Result:
+        <p align="left">
+            <img width="250" src="media/bg_example.png" alt="BG">
+        </p>
 
 <hr>
 
@@ -55,12 +106,63 @@
     - See [here](https://github.com/Tiaansu/pawn-chalk/blob/main/tests/chalk.inc#L90-L106) to see the list of colors available.
     - Example:
         ```pawn 
-            new output[256];
+            new fg_output[256];
 
-            chalk_fg_green("hello world", output);
-            print(output);
+            chalk_fg_none("hello world", fg_output);
+            printf("chalk_fg_none: %s", fg_output);
+            
+            chalk_fg_black("hello world", fg_output);
+            printf("chalk_fg_black: %s", fg_output);
+
+            chalk_fg_red("hello world", fg_output);
+            printf("chalk_fg_red: %s", fg_output);
+
+            chalk_fg_green("hello world", fg_output);
+            printf("chalk_fg_green: %s", fg_output);
+
+            chalk_fg_yellow("hello world", fg_output);
+            printf("chalk_fg_yellow: %s", fg_output);
+
+            chalk_fg_blue("hello world", fg_output);
+            printf("chalk_fg_blue: %s", fg_output);
+
+            chalk_fg_magenta("hello world", fg_output);
+            printf("chalk_fg_magenta: %s", fg_output);
+
+            chalk_fg_cyan("hello world", fg_output);
+            printf("chalk_fg_cyan: %s", fg_output);
+
+            chalk_fg_white("hello world", fg_output);
+            printf("chalk_fg_white: %s", fg_output);
+
+            chalk_fg_bright_black("hello world", fg_output);
+            printf("chalk_fg_bright_black: %s", fg_output);
+
+            chalk_fg_bright_red("hello world", fg_output);
+            printf("chalk_fg_bright_red: %s", fg_output);
+
+            chalk_fg_bright_green("hello world", fg_output);
+            printf("chalk_fg_bright_green: %s", fg_output);
+
+            chalk_fg_bright_yellow("hello world", fg_output);
+            printf("chalk_fg_bright_yellow: %s", fg_output);
+
+            chalk_fg_bright_blue("hello world", fg_output);
+            printf("chalk-fg_bright_blue: %s", fg_output);
+
+            chalk_fg_bright_magenta("hello world", fg_output);
+            printf("chalk_fg_bright_magenta: %s", fg_output);
+
+            chalk_fg_bright_cyan("hello world", fg_output);
+            printf("chalk_fg_bright_cyan: %s", fg_output);
+
+            chalk_fg_bright_white("hello world", fg_output);
+            printf("chalk_fg_bright_white: %s", fg_output);
         ```
-        This will return: <img width="150" src="media/fg_example.png" alt="FG"> 
+        - Result:
+        <p align="left">
+            <img width="250" src="media/fg_example.png" alt="FG"> 
+        </p>
 
 <hr>
 
@@ -77,7 +179,10 @@
             chalk_fmt_italic("this is italic text", output);
             print(output);
         ```
-        This will return: <img width="150" src="media/fmt_example.png" alt="FMT"> 
+        - Result:
+        <p align="center">
+            <img width="250" src="media/fmt_example.png" alt="FMT">
+        </p> 
 
 <hr>
 
