@@ -42,6 +42,8 @@ namespace Chalk
             std::string result{};
 
             result.reserve(str.size());
+
+            std::cout << "struct Color: " << rep_ << std::endl;
             
             result += esc_;
             result += rep_;
@@ -78,83 +80,23 @@ namespace Chalk
         explicit constexpr ForegroundColor() : Color("", "", "") {}
     };
 
-    struct RGB_Color
-    {
-        explicit constexpr RGB_Color(
-            const char* esc, const char* esc2, int r, int g, int b, const char* terminator
-        ) : esc_(esc), esc2_(esc2), r_(r), g_(g), b_(b), terminator_(terminator) {}
+    // class RGB {
+    //     public:
+    //         constexpr RGB(const char* r, const char* g, const char* b) : r_(r), g_(g), b_(b) {}
 
-        explicit constexpr RGB_Color() : esc_(""), esc2_(""), r_(), g_(), b_(), terminator_("") {}
+    //         std::string ToString() const 
+    //         {
+    //             std::stringstream ss;
+    //             ss << "48;2;" << static_cast<int>(r_) << ";" << static_cast<int>(g_)<< ";" << static_cast<int>(b_) << "m";
+    //             std::cout << "class RGB: " << ss.str().c_str() << std::endl;
+    //             return ss.str();
+    //         }
 
-        std::string Wrap(std::string_view str) const
-        {
-            std::string result{};
-
-            result.reserve(str.size());
-
-            // \033[48;2;r_;g_;b_m;\033[49m
-            result += esc_;
-            result += esc2_;
-            result += std::to_string(r_);
-            result += ";";
-            result += std::to_string(g_);
-            result += ";";
-            result += std::to_string(b_);
-            result += "m";
-            result += str;
-            result += esc_;
-            result += terminator_;
-
-            return result;
-        }
-
-        friend class OStreamStyler;
-        
-        private:
-            const char* esc_;
-            const char* esc2_;
-            const char* terminator_;
-            int r_;
-            int g_;
-            int b_;
-    };
-
-    struct BackgroundRGBColor : RGB_Color
-    {
-        static constexpr auto esc_ = "\033[";
-        static constexpr auto esc2_ = "48;2;";
-        static constexpr auto terminator_ ="49m";
-
-        explicit constexpr BackgroundRGBColor(int r, int g, int b) : RGB_Color(esc_, esc2_, r, g, b, terminator_) {}
-    
-        explicit constexpr BackgroundRGBColor() : RGB_Color("", "", -1, -1, -1, "") {}
-    };
-
-    struct ForegroundRGBColor : RGB_Color
-    {
-        static constexpr auto esc_ ="\033[";
-        static constexpr auto esc2_ = "38;2;";
-        static constexpr auto terminator_ = "39m";
-
-        explicit constexpr ForegroundRGBColor(int r, int g, int b) : RGB_Color(esc_, esc2_, r, g, b, terminator_) {}
-
-        explicit constexpr ForegroundRGBColor() : RGB_Color("", "", -1, -1, -1, "") {}
-    };
-
-    namespace BG_RGB
-    {
-        constexpr auto RGB(int r, int g, int b) {
-            return BackgroundRGBColor(r, g, b);
-        }
-    }
-
-    namespace FG_RGB
-    {
-        constexpr auto RGB(int r, int g, int b) {
-            return ForegroundRGBColor(r, g, b);
-        }
-    }
-    
+    //     private:
+    //         const char* r_;
+    //         const char* g_;
+    //         const char* b_;
+    // };
     namespace BG
     {
         constexpr auto Black = BackgroundColor("40m");
@@ -174,6 +116,10 @@ namespace Chalk
         constexpr auto BrightMagenta = BackgroundColor("105m");
         constexpr auto BrightCyan = BackgroundColor("106m");
         constexpr auto BrightWhite = BackgroundColor("107m");
+
+        constexpr auto RGB(int r, int g, int b) {
+            
+        }
 
         constexpr auto None = BackgroundColor();
     };

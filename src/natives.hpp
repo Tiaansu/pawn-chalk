@@ -10,6 +10,9 @@
 
 namespace Native
 {
+    AMX_DECLARE_NATIVE(chalk_bg_rgb);
+    AMX_DECLARE_NATIVE(chalk_bg_hex);
+    
     AMX_DECLARE_NATIVE(chalk_bg_none);
     AMX_DECLARE_NATIVE(chalk_bg_black);
     AMX_DECLARE_NATIVE(chalk_bg_red);
@@ -28,6 +31,9 @@ namespace Native
     AMX_DECLARE_NATIVE(chalk_bg_bright_magenta);
     AMX_DECLARE_NATIVE(chalk_bg_bright_cyan);
     AMX_DECLARE_NATIVE(chalk_bg_bright_white);
+
+    AMX_DECLARE_NATIVE(chalk_fg_rgb);
+    AMX_DECLARE_NATIVE(chalk_fg_hex);
 
     AMX_DECLARE_NATIVE(chalk_fg_none);
     AMX_DECLARE_NATIVE(chalk_fg_black);

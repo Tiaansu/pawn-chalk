@@ -85,6 +85,8 @@ native chalk_bg_bright_blue(const input[], output[], len = sizeof(output));
 native chalk_bg_bright_magenta(const input[], output[], len = sizeof(output));
 native chalk_bg_bright_cyan(const input[], output[], len = sizeof(output));
 native chalk_bg_bright_white(const input[], output[], len = sizeof(output));
+native chalk_bg_rgb(r, g, b, const input[], output[], len = sizeof(output));
+native chalk_bg_hex(const hex[], const input[], output[], len = sizeof(output));
 
 // Foregrounds
 native chalk_fg_none(const input[], output[], len = sizeof(output));
@@ -104,6 +106,8 @@ native chalk_fg_bright_blue(const input[], output[], len = sizeof(output));
 native chalk_fg_bright_magenta(const input[], output[], len = sizeof(output));
 native chalk_fg_bright_cyan(const input[], output[], len = sizeof(output));
 native chalk_fg_bright_white(const input[], output[], len = sizeof(output));
+native chalk_fg_rgb(r, g, b, const input[], output[], len = sizeof(output));
+native chalk_fg_hex(const hex[], const input[], output[], len = sizeof(output));
 
 // Formats / styles
 native chalk_fmt_bold(const input[], output[], len = sizeof(output));
@@ -143,6 +147,42 @@ native chalk_fmt_crossed_out(const input[], output[], len = sizeof(output));
             case BG_BrightCyan:    chalk_bg_bright_cyan(str, output);
             case BG_BrightWhite:   chalk_bg_bright_white(str, output);
         }
+        return output;
+    }
+    
+    stock chalk_rgb_background(r, g, b, const text[], va_args<>)
+    {
+        new str[192], output[192];
+        va_format(str, sizeof(str), text, va_start<4>);
+
+        chalk_bg_rgb(r, g, b, text, output);
+        return output;
+    }
+
+    stock chalk_hex_background(const hex[], const text[], va_args<>)
+    {
+        new str[192], output[192];
+        va_format(str, sizeof(str), text, va_start<2>);
+
+        chalk_bg_hex(hex, str, output);
+        return output;
+    }
+
+    stock chalk_rgb_foreground(r, g, b, const text[], va_args<>)
+    {
+        new str[192], output[192];
+        va_format(str, sizeof(str), text, va_start<4>);
+
+        chalk_fg_rgb(r, g, b, text, output);
+        return output;
+    }
+
+    stock chalk_hex_foreground(const hex[], const text[], va_args<>)
+    {
+        new str[192], output[192];
+        va_format(str, sizeof(str), text, va_start<2>);
+
+        chalk_fg_hex(hex, str, output);
         return output;
     }
 
@@ -194,6 +234,172 @@ native chalk_fmt_crossed_out(const input[], output[], len = sizeof(output));
         return output;
     }
 #else
+    stock chalk_rgb_background(r, g, b, const text[], {Float,_}:...)
+    {
+        static
+            args,
+            str[192],
+            output[192];
+
+        if ((args = numargs()) <= 4)
+        {
+            chalk_bg_rgb(r, g, b, text, output);
+            return output;
+        }
+        else
+        {
+            while (--args >= 4)
+            {
+                #emit LCTRL 	5
+                #emit LOAD.alt 	args
+                #emit SHL.C.alt 2
+                #emit ADD.C 	12
+                #emit ADD
+                #emit LOAD.I
+                #emit PUSH.pri
+            }
+            #emit PUSH.S 		text
+            #emit PUSH.C 		192
+            #emit PUSH.C 		str
+            #emit LOAD.S.pri    8
+            #emit CONST.alt     4
+            #emit SUB
+            #emit PUSH.pri
+            #emit SYSREQ.C 		format
+            #emit LCTRL 		5
+            #emit SCTRL 		4
+
+            chalk_bg_rgb(r, g, b, str, output);
+            return output;
+
+            #emit RETN
+        }
+    }
+
+    stock chalk_hex_background(const hex[], const text[], {Float,_}:...)
+    {
+        static
+            args,
+            str[192],
+            output[192];
+
+        if ((args = numargs()) <= 2)
+        {
+            chalk_bg_hex(hex, text, output);
+            return output;
+        }
+        else
+        {
+            while (--args >= 2)
+            {
+                #emit LCTRL 	5
+                #emit LOAD.alt 	args
+                #emit SHL.C.alt 2
+                #emit ADD.C 	12
+                #emit ADD
+                #emit LOAD.I
+                #emit PUSH.pri
+            }
+            #emit PUSH.S 		text
+            #emit PUSH.C 		192
+            #emit PUSH.C 		str
+            #emit LOAD.S.pri 	8
+            #emit ADD.C 		4
+            #emit PUSH.pri
+            #emit SYSREQ.C 		format
+            #emit LCTRL 		5
+            #emit SCTRL 		4
+
+            chalk_bg_hex(hex, str, output);
+            return output;
+
+            #emit RETN
+        }
+    }
+
+    stock chalk_rgb_foreground(r, g, b, const text[], {Float,_}:...)
+    {
+        static
+            args,
+            str[192],
+            output[192];
+
+        if ((args = numargs()) <= 4)
+        {
+            chalk_fg_rgb(r, g, b, text, output);
+            return output;
+        }
+        else
+        {
+            while (--args >= 4)
+            {
+                #emit LCTRL 	5
+                #emit LOAD.alt 	args
+                #emit SHL.C.alt 2
+                #emit ADD.C 	12
+                #emit ADD
+                #emit LOAD.I
+                #emit PUSH.pri
+            }
+            #emit PUSH.S 		text
+            #emit PUSH.C 		192
+            #emit PUSH.C 		str
+            #emit LOAD.S.pri    8
+            #emit CONST.alt     4
+            #emit SUB
+            #emit PUSH.pri
+            #emit SYSREQ.C 		format
+            #emit LCTRL 		5
+            #emit SCTRL 		4
+
+            chalk_fg_rgb(r, g, b, str, output);
+            return output;
+
+            #emit RETN
+        }
+    }
+
+    stock chalk_hex_foreground(const hex[], const text[], {Float,_}:...)
+    {
+        static
+            args,
+            str[192],
+            output[192];
+
+        if ((args = numargs()) <= 2)
+        {
+            chalk_fg_hex(hex, text, output);
+            return output;
+        }
+        else
+        {
+            while (--args >= 2)
+            {
+                #emit LCTRL 	5
+                #emit LOAD.alt 	args
+                #emit SHL.C.alt 2
+                #emit ADD.C 	12
+                #emit ADD
+                #emit LOAD.I
+                #emit PUSH.pri
+            }
+            #emit PUSH.S 		text
+            #emit PUSH.C 		192
+            #emit PUSH.C 		str
+            #emit LOAD.S.pri 	8
+            #emit ADD.C 		4
+            #emit PUSH.pri
+            #emit SYSREQ.C 		format
+            #emit LCTRL 		5
+            #emit SCTRL 		4
+
+            chalk_fg_hex(hex, str, output);
+            return output;
+
+            #emit RETN
+        }
+    }
+    
     stock chalk_background(e_BackgroundColors:color = BG_None, const text[] = "Test", {Float,_}:...)
     {
         static
@@ -272,6 +478,7 @@ native chalk_fmt_crossed_out(const input[], output[], len = sizeof(output));
             #emit RETN
         }
     }
+
     stock chalk_foreground(e_ForegroundColors:color = FG_None, const text[] = "Test", {Float,_}:...)
     {
         static
@@ -350,6 +557,7 @@ native chalk_fmt_crossed_out(const input[], output[], len = sizeof(output));
             #emit RETN
         }
     }
+
     stock chalk_format_styles(e_FormatStyles:style = FMT_Bold, const text[] = "Test", {Float,_}:...)
     {
         static

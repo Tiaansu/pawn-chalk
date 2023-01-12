@@ -93,6 +93,12 @@
 
             chalk_bg_bright_white("hello world", bg_output);
             printf("chalk_bg_bright_white: %s", bg_output);
+
+            chalk_bg_rgb(255, 255, 0, "hello world", bg_output);
+            printf("chalk_bg_rgb: %s", bg_output);
+
+            chalk_bg_hex("#FF0000", "hello world", bg_output);
+            printf("chalk_bg_hex: %s", bg_output);
         ```
         - Result:
         <p align="left">
@@ -158,6 +164,12 @@
 
             chalk_fg_bright_white("hello world", fg_output);
             printf("chalk_fg_bright_white: %s", fg_output);
+
+            chalk_fg_rgb(255, 255, 0, "hello world", fg_output);
+            printf("chalk_fg_rgb: %s", fg_output);
+
+            chalk_fg_hex("#FF0000", "hello world", fg_output);
+            printf("chalk_fg_hex: %s", fg_output);
         ```
         - Result:
         <p align="left">
@@ -202,6 +214,85 @@
             printf("Hello %s", chalk_background(BG_Red, "World %s", "Formatted"));
         ```
         This will return: <img width="150" src="media/custom_bg_example.png" alt="Custom BG"> 
+
+<hr>
+
+* `chalk_rgb_background`
+    - Params:
+        - r:
+            - The R color value of background.
+        - g:
+            - The G color value of background.
+        - b:
+            - The B color value of background.
+        - text
+            - The string of text you want to apply the background color t.
+        - {Float,_}:... (optional)
+            - If your string need to be formatted, you'll use it.
+    - Example:
+        ```pawn
+            printf("Hello %s", chalk_rgb_background(255, 255, 0, "World"));
+            printf("Hello %s", chalk_rgb_background(255, 0, 0, "World %s", "Formatted"));
+        ```
+        This will return <img width="150" src="media/custom_rgb_bg_example.png" alt="Custom BG">
+
+<hr>
+
+* `chalk_hex_background`
+    - Params:
+        - hex:
+            - The hex color string.
+            - Example: `#FF0000` for red.
+        - text
+            - The string of text you want to apply the background color t.
+        - {Float,_}:... (optional)
+            - If your string need to be formatted, you'll use it.
+    - Example:
+        ```pawn
+            printf("Hello %s", chalk_hex_background("#FFFF00", "World"));
+            printf("Hello %s", chalk_hex_background("#FF0000", "World %s", "Formatted"));
+        ```
+        This will return <img width="150" src="media/custom_hex_bg_example.png" alt="Custom BG">
+
+<hr>
+
+
+* `chalk_rgb_foreground`
+    - Params:
+        - r:
+            - The R color value of foreground.
+        - g:
+            - The G color value of foreground.
+        - b:
+            - The B color value of foreground.
+        - text
+            - The string of text you want to apply the foreground color t.
+        - {Float,_}:... (optional)
+            - If your string need to be formatted, you'll use it.
+    - Example:
+        ```pawn
+            printf("Hello %s", chalk_rgb_foreground(255, 255, 0, "World"));
+            printf("Hello %s", chalk_rgb_foreground(255, 0, 0, "World %s", "Formatted"));
+        ```
+        This will return <img width="150" src="media/custom_rgb_fg_example.png" alt="Custom BG">
+
+<hr>
+
+* `chalk_hex_foreground`
+    - Params:
+        - hex:
+            - The hex color string.
+            - Example: `#FF0000` for red.
+        - text
+            - The string of text you want to apply the foreground color t.
+        - {Float,_}:... (optional)
+            - If your string need to be formatted, you'll use it.
+    - Example:
+        ```pawn
+            printf("Hello %s", chalk_hex_foreground("#FFFF00", "World"));
+            printf("Hello %s", chalk_hex_foreground("#FF0000", "World %s", "Formatted"));
+        ```
+        This will return <img width="150" src="media/custom_hex_fg_example.png" alt="Custom BG">
 
 <hr>
 

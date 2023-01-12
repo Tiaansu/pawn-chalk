@@ -9,6 +9,9 @@ logprintf_t logprintf;
 
 AMX_NATIVE_INFO NATIVES[] =
 {
+    AMX_DEFINE_NATIVE(chalk_bg_rgb)
+    AMX_DEFINE_NATIVE(chalk_bg_hex)
+
     AMX_DEFINE_NATIVE(chalk_bg_none)
     AMX_DEFINE_NATIVE(chalk_bg_black)
     AMX_DEFINE_NATIVE(chalk_bg_red)
@@ -27,6 +30,9 @@ AMX_NATIVE_INFO NATIVES[] =
     AMX_DEFINE_NATIVE(chalk_bg_bright_magenta)
     AMX_DEFINE_NATIVE(chalk_bg_bright_cyan)
     AMX_DEFINE_NATIVE(chalk_bg_bright_white)
+
+    AMX_DEFINE_NATIVE(chalk_fg_rgb)
+    AMX_DEFINE_NATIVE(chalk_fg_hex)
 
     AMX_DEFINE_NATIVE(chalk_fg_none)
     AMX_DEFINE_NATIVE(chalk_fg_black)

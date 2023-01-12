@@ -15,7 +15,7 @@ include_directories(
 
 configure_file(
     "../chalk.inc.in"
-    "${CMAKE_BINARY_DIR}/artifact/pawno/include/chalk.inc"
+    "${CMAKE_BINARY_DIR}/artifact/qawno/include/chalk.inc"
     @ONLY
 )
 
