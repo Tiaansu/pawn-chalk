@@ -141,19 +141,19 @@ namespace Chalk
         explicit constexpr ForegroundRGBColor() : RGB_Color("", "", -1, -1, -1, "") {}
     };
 
-    namespace BG_RGB
-    {
-        constexpr auto RGB(int r, int g, int b) {
-            return BackgroundRGBColor(r, g, b);
-        }
-    }
+    // namespace BG_RGB
+    // {
+    //     constexpr auto RGB(int r, int g, int b) {
+    //         return BackgroundRGBColor(r, g, b);
+    //     }
+    // }
 
-    namespace FG_RGB
-    {
-        constexpr auto RGB(int r, int g, int b) {
-            return ForegroundRGBColor(r, g, b);
-        }
-    }
+    // namespace FG_RGB
+    // {
+    //     constexpr auto RGB(int r, int g, int b) {
+    //         return ForegroundRGBColor(r, g, b);
+    //     }
+    // }
     
     namespace BG
     {
@@ -174,6 +174,11 @@ namespace Chalk
         constexpr auto BrightMagenta = BackgroundColor("105m");
         constexpr auto BrightCyan = BackgroundColor("106m");
         constexpr auto BrightWhite = BackgroundColor("107m");
+
+        constexpr auto RGB(int r, int g, int b)
+        {
+            return BackgroundRGBColor(r, g, b);
+        }
 
         constexpr auto None = BackgroundColor();
     };
@@ -197,6 +202,11 @@ namespace Chalk
         constexpr auto BrightMagenta = ForegroundColor("95m");
         constexpr auto BrightCyan = ForegroundColor("96m");
         constexpr auto BrightWhite = ForegroundColor("97m");
+
+        constexpr auto RGB(int r, int g, int b)
+        {
+            return ForegroundRGBColor(r, g, b);
+        }
 
         constexpr auto None = ForegroundColor();
     };

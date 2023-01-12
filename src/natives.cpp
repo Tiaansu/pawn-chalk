@@ -36,7 +36,7 @@ AMX_DECLARE_NATIVE(Native::chalk_bg_hex)
     auto g = static_cast<int>(color.g);
     auto b = static_cast<int>(color.b);
 
-    amx_SetCppString(amx, params[3], Chalk::BG_RGB::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[2])), params[4]);
+    amx_SetCppString(amx, params[3], Chalk::BG::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[2])), params[4]);
     return 0;
 }
 
@@ -47,7 +47,7 @@ AMX_DECLARE_NATIVE(Native::chalk_bg_rgb)
     auto g = static_cast<int>(params[2]);
     auto b = static_cast<int>(params[3]);
 
-    amx_SetCppString(amx, params[5], Chalk::BG_RGB::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[4])), params[6]);
+    amx_SetCppString(amx, params[5], Chalk::BG::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[4])), params[6]);
     return 0;
 }
 
@@ -59,7 +59,7 @@ AMX_DECLARE_NATIVE(Native::chalk_fg_hex)
     auto g = static_cast<int>(color.g);
     auto b = static_cast<int>(color.b);
 
-    amx_SetCppString(amx, params[3], Chalk::FG_RGB::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[2])), params[4]);
+    amx_SetCppString(amx, params[3], Chalk::FG::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[2])), params[4]);
     return 0;
 }
 
@@ -70,7 +70,7 @@ AMX_DECLARE_NATIVE(Native::chalk_fg_rgb)
     auto g = static_cast<int>(params[2]);
     auto b = static_cast<int>(params[3]);
 
-    amx_SetCppString(amx, params[5], Chalk::FG_RGB::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[4])), params[6]);
+    amx_SetCppString(amx, params[5], Chalk::FG::RGB(r, g, b).Wrap(amx_GetCppString(amx, params[4])), params[6]);
     return 0;
 }
 

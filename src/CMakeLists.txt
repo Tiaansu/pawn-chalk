@@ -6,11 +6,17 @@ find_package(SAMPSDK REQUIRED)
 
 set(PAWNCHALK_CONFIG_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/config_headers")
 
-set(PAWNCHALK_VERSION "1.0.0")
+set(PAWNCHALK_VERSION "1.1.0")
 
 include_directories(
     ${SAMPSDK_INCLUDE_DIR}
     ${PAWNCHALK_CONFIG_INCLUDE_DIR}
+)
+
+configure_file(
+    "../chalk.inc.in"
+    "${CMAKE_BINARY_DIR}/artifact/pawno/include/chalk.inc"
+    @ONLY
 )
 
 configure_file(
