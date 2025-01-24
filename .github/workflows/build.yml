@@ -52,8 +52,8 @@ jobs:
           mkdir -p qawno/include
           cd ..
           mv ./build/src/Release/pawnchalk.dll ./dist/components/pawnchalk.dll
-          mv ./pawnchalk.inc ./dist/pawno/include/pawnchalk.inc
-          mv ./pawnchalk.inc ./dist/qawno/include/pawnchalk.inc
+          cp ./pawnchalk.inc ./dist/pawno/include/pawnchalk.inc
+          cp ./pawnchalk.inc ./dist/qawno/include/pawnchalk.inc
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -93,8 +93,8 @@ jobs:
           mkdir -p qawno/include
           cd ..
           mv ./build/src/pawnchalk.so ./dist/components/pawnchalk.so
-          mv ./pawnchalk.inc ./dist/pawno/include/pawnchalk.inc
-          mv ./pawnchalk.inc ./dist/qawno/include/pawnchalk.inc
+          cp ./pawnchalk.inc ./dist/pawno/include/pawnchalk.inc
+          cp ./pawnchalk.inc ./dist/qawno/include/pawnchalk.inc
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
