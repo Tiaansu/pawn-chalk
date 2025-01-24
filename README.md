@@ -26,7 +26,7 @@ Terminal string styling done right
     - Example:
         ```pawn
         new output[256];
-        chalk_bg(RebeccaPurple, "Hello World");
+        chalk_bg(RebeccaPurple, output, sizeof output, "Hello World");
         print(output);
         ```
     - Result:
@@ -34,13 +34,13 @@ Terminal string styling done right
         <img width='150' src='assets/bg.png' alt='bg' />
     </p>
 
-* `chalk_bg`
+* `chalk_fg`
     - Change the color of a string
     - See [here](./pawnchalk.inc#L8-L164) to see the list.
     - Example:
         ```pawn
         new output[256];
-        chalk_fg(RebeccaPurple, "Hello World");
+        chalk_fg(RebeccaPurple, output, sizeof output, "Hello World");
         print(output);
         ```
     - Result:
@@ -48,13 +48,13 @@ Terminal string styling done right
         <img width='150' src='assets/fg.png' alt='fg' />
     </p>
 
-* `chalk_bg`
+* `chalk_style`
     - Add styling to a string
     - See [here](./pawnchalk.inc#L169-L176) to see the list.
     - Example:
         ```pawn
         new output[256];
-        chalk_fg(RebeccaPurple, "Hello World");
+        chalk_style(Bold, output, sizeof output, "Hello World");
         print(output);
         ```
     - Result:
