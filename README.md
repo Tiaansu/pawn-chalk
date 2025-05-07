@@ -2,6 +2,17 @@
 
 Terminal string styling done right
 
+> [!IMPORTANT]
+> For those people who are running the server directly (clicking samp-server.exe or omp-server.exe), there might be an issue where the console wont properly show the colors.
+> Here's the solution, thanks to **Knife** for providing the solution:
+> 1. Right click the top edge of console window.
+> 2. Click the **Default**.
+> 3. Navigate to **Terminal** tab.
+> 4. And choose **command prompt** option in **default terminal application** drop-down menu.
+> 5. Restart the server by closing the window.   
+> 
+> Reference: [here](https://discord.com/channels/231799104731217931/231799180127895553/1332736620473880778)
+
 ## Installation
 
 1. Download from [the `releases` page](https://github.com/Tiaansu/pawn-chalk/releases) the desired version of the plugin for your platform.
@@ -75,14 +86,3 @@ Terminal string styling done right
 
 > [!NOTE]   
 > All of the natives now supports formatting.
-
-> [!IMPORTANT]
-> For those people who are running the server directly (clicking samp-server.exe or omp-server.exe), there might be an issue where the console wont properly show the colors.
-> Here's the solution, thanks to **Knife** for providing the solution:
-> 1. Right click the top edge of console window.
-> 2. Click the **Default**.
-> 3. Navigate to **Terminal** tab.
-> 4. And choose **command prompt** option in **default terminal application** drop-down menu.
-> 5. Restart the server by closing the window.   
-> 
-> Reference: [here](https://discord.com/channels/231799104731217931/231799180127895553/1332736620473880778)
