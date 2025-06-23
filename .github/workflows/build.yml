@@ -87,6 +87,8 @@ jobs:
         run: |
           echo [ root ]
           ls .
+          echo [ build ]
+          ls build
           echo [ docker ]
           ls docker
           echo [ docker/build ]
