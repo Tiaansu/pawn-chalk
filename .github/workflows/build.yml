@@ -83,14 +83,22 @@ jobs:
           chmod +x ./docker-entrypoint.sh
           ./build.sh
 
-      - name: Move files
+      - name: DEBUG
         run: |
-          cp docker/build/pawnchalk.so artifact/plugins/pawnchalk.so
-          cp pawnchalk.inc artifact/pawno/include/pawnchalk.inc
-          cp pawnchalk.inc artifact/qawno/include/pawnchalk.inc
+          echo docker/build
+          ls docker/build
+          echo ======
+          echo docker/build/lib
+          ls docker/build/lib
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: pawnchalk-linux
-          path: artifact/*
+      # - name: Move files
+      #   run: |
+      #     cp docker/build/pawnchalk.so artifact/plugins/pawnchalk.so
+      #     cp pawnchalk.inc artifact/pawno/include/pawnchalk.inc
+      #     cp pawnchalk.inc artifact/qawno/include/pawnchalk.inc
+
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: pawnchalk-linux
+      #     path: artifact/*
