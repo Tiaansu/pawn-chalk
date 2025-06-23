@@ -85,13 +85,13 @@ jobs:
 
       - name: DEBUG
         run: |
-          echo docker
+          echo [ root ]
+          ls .
+          echo [ docker ]
           ls docker
-          echo ======
-          echo docker/build
+          echo [ docker/build ]
           ls docker/build
-          echo ======
-          echo docker/build/lib
+          echo [ docker/build/lib ]
           ls docker/build/lib
 
       # - name: Move files
